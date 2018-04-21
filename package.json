@@ -1,0 +1,27 @@
+{
+  "name": "bestexchanges-server",
+  "version": "1.0.0",
+  "description": "backend nodejs server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jperryman23/bestExchanges-server.git"
+  },
+  "author": "Jules Perryman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jperryman23/bestExchanges-server/issues"
+  },
+  "homepage": "https://github.com/jperryman23/bestExchanges-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
