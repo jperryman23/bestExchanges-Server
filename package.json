@@ -19,7 +19,17 @@
   "homepage": "https://github.com/jperryman23/bestExchanges-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.3"
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "^2.6.9",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.1.2",
+    "pg": "^7.4.1",
+    "pg-format": "^1.0.4",
+    "request": "^2.85.0",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
