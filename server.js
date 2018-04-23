@@ -18,9 +18,6 @@ const cors = require('cors');
 // const fetch = require('node-fetch');
 // const inserts = require('../db/queries');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
 
 const app = express();
 
@@ -44,16 +41,11 @@ app.use(cors({
 
 
 
-
-
-
-
-
 app.get('/', (req, res) => {
   res.send('Hello Jules!')
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
