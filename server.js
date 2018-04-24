@@ -39,9 +39,6 @@ app.use(cors({
 //   optionsSuccessStatus: 200
 // }));
 
-
-
-
 const port = process.env.PORT || 5050;
 
 app.listen(port, () => {
@@ -50,14 +47,19 @@ app.listen(port, () => {
 })
 
 
-
+const bittrex = require('./api/bittrex');
 const coincap = require('./api/coincap');
+const kraken = require('./api/kraken');
+const poloniex = require('./api/poloniex');
+
 
 //Mount the router
 
 // app.use('/routes/poloOrders', poloOrders)
-
+app.use('/api/bittrex', bittrex);
 app.use('/api/coincap', coincap);
+app.use('/api/kraken', kraken);
+app.use('/api/poloniex', poloniex);
 
 
 // Test to see if rendering on /
