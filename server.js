@@ -1,7 +1,7 @@
 const express = require('express');
 require('dotenv').config()
 const path = require('path');
-// const favicon = require('serve-favicon');
+const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const logger = require('morgan');
