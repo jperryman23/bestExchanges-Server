@@ -5,7 +5,7 @@ const favicon = require('serve-favicon');
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-// const pg = require('./db/knex')
+const pg = require('./db/knex')
 const router = express.Router();
 const https = require('https');
 const request = require('request');
@@ -23,27 +23,24 @@ const app = express();
 
 //MIDDLE WARE
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(logger('dev'));
 app.use(cookieParser());
-
-// app.use(cors({
-//   origin: 'https://s3-us-west-1.amazonaws.com',
-//   optionsSuccessStatus: 200
-// }));
 
 app.use(cors({
   origin: 'http://localhost:8080',
   optionsSuccessStatus: 200
 }));
 
+// FOR HOSTING ON AWS
+// app.use(cors({
+//   origin: 'https://s3-us-west-1.amazonaws.com',
+//   optionsSuccessStatus: 200
+// }));
 
 
-app.get('/', (req, res) => {
-  res.send('Hello Jules!')
-});
+
 
 const port = process.env.PORT || 5050;
 
@@ -51,6 +48,31 @@ app.listen(port, () => {
   console.log(`server running on port ${port}`);
 
 })
+
+
+
+const coincap = require('./api/coincap');
+
+//Mount the router
+
+// app.use('/routes/poloOrders', poloOrders)
+
+app.use('/api/coincap', coincap);
+
+
+// Test to see if rendering on /
+app.get('/', (req, res) => {
+  res.send('Hello Jules!')
+});
+
+//
+//
+// const port = process.env.PORT || 5050;
+//
+// app.listen(port, () => {
+//   console.log(`server running on port ${port}`);
+//
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
