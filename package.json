@@ -2,11 +2,11 @@
   "name": "bestexchanges-server",
   "version": "1.0.0",
   "description": "backend nodejs server",
+  "private": true,
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "dev-server": "nodemon server.js",
-    "test": "(dropdb --if-exists test-combined-order-book  && createdb test-combined-order-book) && NODE_ENV=test mocha"
+    "test": "(dropdb --if-exists best-exchange  && createdb best-exchange) && NODE_ENV=test mocha"
   },
   "repository": {
     "type": "git",

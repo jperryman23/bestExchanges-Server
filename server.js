@@ -6,21 +6,19 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const pg = require('./db/knex')
-const router = express.Router();
-const https = require('https');
+const fetch = require('node-fetch')
+// const https = require('https');
 const request = require('request');
 const cors = require('cors');
 
 
 // var url = require('url')
-// const ezc = require('express-zero-config');
-// const router = ezc.createRouter();
 // const fetch = require('node-fetch');
 // const inserts = require('../db/queries');
 
 
 const app = express();
-
+const router = express.Router();
 //MIDDLE WARE
 
 app.use(bodyParser.json());
@@ -46,14 +44,17 @@ app.listen(port, () => {
 
 })
 
-
+// API's
 const bittrex = require('./api/bittrex');
 const coincap = require('./api/coincap');
 const kraken = require('./api/kraken');
 const poloniex = require('./api/poloniex');
 
 
+
 //Mount the router
+// const router = express.Router();
+
 
 // app.use('/routes/poloOrders', poloOrders)
 app.use('/api/bittrex', bittrex);
@@ -62,19 +63,13 @@ app.use('/api/kraken', kraken);
 app.use('/api/poloniex', poloniex);
 
 
+
 // Test to see if rendering on /
 app.get('/', (req, res) => {
   res.send('Hello Jules!')
 });
 
-//
-//
-// const port = process.env.PORT || 5050;
-//
-// app.listen(port, () => {
-//   console.log(`server running on port ${port}`);
-//
-// })
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,0 @@
-PostgresDB
-
-"test": "(dropdb --if-exists test-combined-order-book  && createdb test-combined-order-book) && NODE_ENV=test mocha"
