@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
       table.increments();
       table.float('btc_usd')
       table.text('alt_name')
-      table.float('rate')
+      table.integer('rate')
       table.float('alt_usd')
-
+      tabe.date('date')
   })
 };
 

@@ -2,3 +2,16 @@
 in browser...
 
 fetch('http://coincap.io/page/ETH').then(result => console.log(result))
+
+
+
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/jperryman23/bestExchanges-server.git"
+},
+"author": "Jules Perryman",
+"license": "ISC",
+"bugs": {
+  "url": "https://github.com/jperryman23/bestExchanges-server/issues"
+},
+"homepage": "https://github.com/jperryman23/bestExchanges-server#readme",

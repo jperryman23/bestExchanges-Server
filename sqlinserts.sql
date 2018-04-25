@@ -6,21 +6,78 @@ $ createdb best-exchange
 $ psql best-exchange
 
 
-CREATE TABLE rando_exchange(
+CREATE TABLE kraken (
 id serial PRIMARY KEY,
-btc_usd real NOT NULL,
+btc_usd float NOT NULL,
 alt_name VARCHAR (20) NOT NULL,
-rate real NOT NULL,
-alt_usd real,
-date_time TIMESTAMP,
+rate float NOT NULL,
+alt_usd float,
 date DATE
 );
+ALTER TABLE kraken ALTER COLUMN date SET DEFAULT CURRENT_DATE
 
-INSERT INTO rando_exchange (btc_usd, alt_name, rate, alt_usd, date)
+CREATE TABLE poloniex (
+id serial PRIMARY KEY,
+btc_usd float NOT NULL,
+alt_name VARCHAR (20) NOT NULL,
+rate float NOT NULL,
+alt_usd float,
+date DATE
+);
+ALTER TABLE poloniex ALTER COLUMN date SET DEFAULT CURRENT_DATE
+
+
+CREATE TABLE bittrex (
+id serial PRIMARY KEY,
+btc_usd float NOT NULL,
+alt_name VARCHAR (20) NOT NULL,
+rate float NOT NULL,
+alt_usd float,
+date DATE
+);
+ALTER TABLE bittrex ALTER COLUMN date SET DEFAULT CURRENT_DATE;
+
+
+CREATE TABLE coincap (
+id serial PRIMARY KEY,
+btc_usd float NOT NULL,
+alt_name VARCHAR (20) NOT NULL,
+rate float NOT NULL,
+alt_usd float,
+date DATE
+);
+ALTER TABLE coincap ALTER COLUMN date SET DEFAULT CURRENT_DATE
+
+
+
+
+INSERT INTO coincap (btc_usd, alt_name, rate, alt_usd, date)
 VALUES
-(8874.33, 'Ethereum', 0.071, 688.34, TIMESTAMP, DEFAULT);
+(9469.22, 'Ethereum', 0.071, 664.65, DEFAULT),
+(9504.73, 'Litecoin', 0.016, 155.88, DEFAULT),
+(9459.43, 'Dash', 0.052, 494.09, DEFAULT);
 
-ALTER TABLE rando_exchange ALTER COLUMN date SET DEFAULT CURRENT_DATE
+
+INSERT INTO bittrex (btc_usd, alt_name, rate, alt_usd, date)
+VALUES
+(9469.22, 'Ethereum', 0.071, 664.65, DEFAULT),
+(9504.73, 'Litecoin', 0.016, 155.88, DEFAULT),
+(9459.43, 'Dash', 0.052, 494.09, DEFAULT);
+
+INSERT INTO poloniex (btc_usd, alt_name, rate, alt_usd, date)
+VALUES
+(9469.22, 'Ethereum', 0.071, 664.65, DEFAULT),
+(9504.73, 'Litecoin', 0.016, 155.88, DEFAULT),
+(9459.43, 'Dash', 0.052, 494.09, DEFAULT);
+
+INSERT INTO kraken (btc_usd, alt_name, rate, alt_usd, date)
+VALUES
+(9469.22, 'Ethereum', 0.071, 664.65, DEFAULT),
+(9504.73, 'Litecoin', 0.016, 155.88, DEFAULT),
+(9459.43, 'Dash', 0.052, 494.09, DEFAULT);
+
+
+
 
 
 To_char , to_num trim

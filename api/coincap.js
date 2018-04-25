@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// const queries = require('../db/queries');
-const https = require('https');
+const queries = require('../db/queries');
+// const https = require('https');
 const path = require('path');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -11,6 +11,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+const COINCAP_URL = 'http://coincap.io/page/'
+
 
 
 router.get('/',(req, res)=>{
@@ -31,12 +34,36 @@ router.get('/',(req, res)=>{
 
 // NODE-FETCH METHOD
 
-    	fetch('http://coincap.io/page/ETH')
-    	    .then(function(res) {
-    	        return res.json();
-    	    }).then(function(json) {
-    	        res.json(json);
-    	    });
+fetch(COINCAP_URL + 'ETH')
+    .then(r => r.json())
+    .then(data => {
+        let eth = 'BTC Price: $' + data.btcPrice.toFixed(3) + ' alt_name: ' + data.display_name + ' rate: ' + data.price_btc.toFixed(3) + ' ETH_USD: $' + data.price_usd.toFixed(3);
+        // const eth = {
+        //     btc_usd: data.btcPrice.toFixed(3),
+        //     alt_name: data.display_name,
+        //     rate: data.price_btc.toFixed(3),
+        //     alt_usd: data.price_usd.toFixed(3),
+        //     date: date
+        //   }
+        // })
+        res.send(eth)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
+// data.btcPrice
+// data.display_name
+// data.price_btc
+// data.price_usd
+
+
+    	// fetch(COINCAP_URL + 'ETH')
+    	//     .then(function(res) {
+    	//         return res.json();
+    	//     }).then(function(json) {
+    	//         res.send(json);
+    	//     });
 
 
 // ASYNC AWAIT METHOD
