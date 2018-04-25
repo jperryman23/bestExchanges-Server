@@ -8,16 +8,6 @@
     "dev-server": "nodemon server.js",
     "test": "(dropdb --if-exists best-exchange  && createdb best-exchange) && NODE_ENV=test mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jperryman23/bestExchanges-server.git"
-  },
-  "author": "Jules Perryman",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jperryman23/bestExchanges-server/issues"
-  },
-  "homepage": "https://github.com/jperryman23/bestExchanges-server#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
