@@ -5,16 +5,50 @@ const https = require('https');
 const path = require('path');
 const bodyParser = require('body-parser');
 const request = require('request');
-
+const fetch = require('node-fetch')
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+const BITTREX_URL="https://bittrex.com/api/v1.1/public/getmarketsummaries/"
 
-router.get('/',(req, res)=>{
-  res.send("BITTREX API is working");
+router.get('/',(req, res, next)=>{
+  // res.send("BITTREX API is working");
+
+  fetch(BITTREX_URL)
+      .then(r => r.json())
+      .then(data => {
+
+        let latestPrices = {
+        USDT_BTC: data.result[259].Ask,
+        BTC_ETH:  data.result[57].Ask,
+        BTC_LTC:  data.result[89].Ask,
+        BTC_DASH: data.result[36].Ask
+        }
+        // const prices = data.result.map((result) =>{
+        //   return {
+        //     USDT_BTC: data.result[259].Ask.toFixed(2),
+        //     BTC_ETH: data.result[57].Ask.toFixed(4),
+        //     BTC_LTC: data.result[89].Ask.toFixed(4),
+        //     BTC_DASH: data.result[36].Ask.toFixed(4),
+        //   }
+        // })
+        // sends same thing a ton of times...dont even need to map it.
+        console.log(latestPrices);
+        // console.log(data.result[259]);
+        // console.log(data.result[57].Ask) //ETH PRICE
+        // console.log(data.result[89].Ask) //BTC_LTC
+        // console.log(data.result[36].Ask) //DASH_LTC
+        // console.log(data.result[259].Ask) //USDT_BTC
+          res.send(latestPrices)
+      })
+      .catch(err => {
+          console.log(err)
+      })
+
 })
+
 
 module.exports = router;
 
