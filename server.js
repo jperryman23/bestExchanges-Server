@@ -15,7 +15,7 @@ const cors = require('cors');
 // var url = require('url')
 // const fetch = require('node-fetch');
 // const inserts = require('../db/queries');
-
+bcypher = require('blockcypher');
 
 const app = express();
 const router = express.Router();
