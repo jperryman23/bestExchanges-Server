@@ -47,6 +47,7 @@ app.listen(port, () => {
 // API's
 const bittrex = require('./api/bittrex');
 const coincap = require('./api/coincap');
+const historical = require('./api/historical');
 const kraken = require('./api/kraken');
 const poloniex = require('./api/poloniex');
 
@@ -59,6 +60,7 @@ const poloniex = require('./api/poloniex');
 // app.use('/routes/poloOrders', poloOrders)
 app.use('/api/bittrex', bittrex);
 app.use('/api/coincap', coincap);
+app.use('/api/historical', historical);
 app.use('/api/kraken', kraken);
 app.use('/api/poloniex', poloniex);
 
